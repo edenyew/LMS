@@ -1,0 +1,35 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 1 Mar, 2023, 6:41:08 PM
+    Author     : edenyew
+*/
+
+.loginContainter {
+    width: 100%;
+    height: 100vh;
+    align-items: center;
+    text-align: center;
+    margin-top: 5rem;
+    
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    align-items: center;    
+}
+
+.top-header {
+    margin-bottom: 2rem;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.input-field {
+    margin-left: 10px;
+}
+

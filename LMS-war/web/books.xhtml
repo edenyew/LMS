@@ -1,0 +1,153 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./layout/default.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="top">
+
+        <h:form>
+            <div class="header">
+                <div class="header-logo">
+                    <h3 class="logo">Library Management System</h3>
+                </div>
+                <nav>
+                    <a href="home.xhtml">Home</a>
+                    <p:menubar>
+                        <p:submenu label="Member">
+                            <p:menuitem value="View All Members" outcome="/members.xhtml"/>
+                            <p:menuitem value="Register Member" outcome="/registerMember.xhtml"/>
+                        </p:submenu>
+                        <p:submenu label="Books">
+                            <p:menuitem value="View All Books" outcome="/books.xhtml"/>
+                            <p:menuitem value="Return Book" outcome="/returnBook.xhtml"/>
+                            <p:menuitem value="Lend Book" outcome="/lendBook.xhtml"/>
+                            <p:menuitem value="Add Books" outcome="/addBook.xhtml"/>
+                        </p:submenu>
+                    </p:menubar>
+                    <p:commandButton class="logout" value="Logout" action="#{authenticationManagedBean.logout()}"/>
+                </nav>
+            </div>
+        </h:form>
+
+    </ui:define>
+
+    <ui:define name="content">
+
+        <style type="text/css">
+            .ui-datatable {
+                margin-bottom: 25px
+            }
+
+            .ui-datatable .ui-datatable-header {
+                text-align: right !important;
+            }
+
+            .ui-button-text-only .ui-button-text {
+                padding: 0.3em 0.4em;
+            }
+
+            .ui-selectcheckboxmenu-panel .ui-selectcheckboxmenu-header .ui-chkbox {
+                visibility: hidden;
+            }
+
+            .ui-filter-column .ui-column-customfilter .custom-filter {
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+            .year-spinner input {
+                width: 100%;
+                box-sizing: border-box;
+            }
+        </style>
+
+        <h:form id="form">
+            <p:growl id="growl" showDetail="true" sticky="true" />
+            <div class="container">
+                <div class="content-table">
+                    <p:dataTable id="basicDT" var="book" value="#{bookManagedBean.allBooks}" widgetVar="booksTable"
+                                 emptyMessage="No books found"  filteredValue="#{bookManagedBean.filteredBooks}"
+                                 globalFilterFunction="#{bookManagedBean.globalFilterFunction}"
+                                 resizableColumns="true" >
+
+                        <f:facet name="header">
+                            <p:outputPanel>
+                                <h:outputText value="Search all fields: " />
+                                <p:inputText id="globalFilter" onkeyup="PF('booksTable').filter()" style="width:150px" placeholder="Search"/>
+                            </p:outputPanel>
+                        </f:facet>
+                        <p:column headerText="Book ID">
+                            <h:outputText value="#{book.bookId}" />
+                        </p:column>
+                        <p:column headerText="Title">
+                            <h:outputText value="#{book.title}" />
+                        </p:column>
+
+                        <p:column headerText="ISBN">
+                            <h:outputText value="#{book.isbn}" />
+                        </p:column>
+
+                        <p:column headerText="Status">
+                            <h:outputText value="#{book.available ? 'Available': 'Loaned'}" />
+                        </p:column>
+
+                        <p:column headerText="Author">
+                            <h:outputText value="#{book.author}" />
+                        </p:column>
+
+                        <p:column>
+                            <p:commandButton update=":form:bookDetails" oncomplete="PF('bookDialog').show()" 
+                                             title="View" icon="fa fa-fw fa-search">
+                                <f:setPropertyActionListener value="#{book}" target="#{bookManagedBean.selectedBook}" />
+                            </p:commandButton>
+                            <p:button icon="fa fa-fw fa-edit" title="Edit">
+<!--                                <f:param name="cId" value="#{customer.id}" />-->
+                            </p:button>
+                            <p:commandButton icon="fa fa-fw fa-remove" action="#{bookManagedBean.deleteBook}" update=":form" title="Delete">
+                                <f:param name="bId" value="#{book.bookId}" />
+                            </p:commandButton>
+                        </p:column>                        
+                    </p:dataTable>
+                </div>
+            </div>
+            <p:dialog header="Book Details" widgetVar="bookDialog" modal="false" showEffect="fade" hideEffect="fade" resizable="false">
+                <p:outputPanel id="bookDetails"> 
+                    <p:panelGrid columns="2" rendered="#{not empty bookManagedBean.selectedBook}"> 
+                        <h:outputText value="Book ID" />
+                        <h:outputText value="#{bookManagedBean.selectedBook.bookId}" />
+                        <h:outputText value="Author" />
+                        <h:outputText value="#{bookManagedBean.selectedBook.author}" />
+                        <h:outputText value="Title" />
+                        <h:outputText value="#{bookManagedBean.selectedBook.title}" />
+                        <h:outputText value="ISBN" />
+                        <h:outputText value="#{bookManagedBean.selectedBook.isbn}" />         
+                        <h:outputText value="Status" />
+                        <h:outputText value="#{bookManagedBean.selectedBook.available ? 'Available': 'Loaned'}" /> 
+                        <h:outputText value="Lend Date" />
+                        <h:outputText value="#{!bookManagedBean.selectedBook.available ? 
+                                               lendAndReturnManagedBean.getLatestLendAndReturnRecordByBook(bookManagedBean.selectedBook).getLendDate() : 'N/A'}" />
+                        <h:outputText value="Member Identity Number" />
+                        <h:outputText value="#{!bookManagedBean.selectedBook.available ? 
+                                               lendAndReturnManagedBean.getLatestLendAndReturnRecordByBook(bookManagedBean.selectedBook).getMember().identityNo : 'N/A'}" />
+                        <h:outputText value="Fine Amount" />
+                        <h:outputText value="#{!(lendAndReturnManagedBean.checkPaymentStatus(bookManagedBean.selectedBook)) ? lendAndReturnManagedBean.generateFineAmount(bookManagedBean.selectedBook) : 'N/A'}" />
+                    </p:panelGrid>
+
+                    <div>
+                        <h:commandButton value="Lend" rendered="#{bookManagedBean.selectedBook.available}" action="lendBook?faces-redirect=true" />
+
+                        <h:commandButton value="Return" rendered="#{!bookManagedBean.selectedBook.available}" disabled="#{!(lendAndReturnManagedBean.checkPaymentStatus(bookManagedBean.selectedBook))}" actionListener="#{lendAndReturnManagedBean.returnABook(event, bookManagedBean.selectedBook)}" />
+
+                        <h:commandButton value="Pay outstanding fee" rendered="#{!bookManagedBean.selectedBook.available}" disabled="#{lendAndReturnManagedBean.checkPaymentStatus(bookManagedBean.selectedBook)}" actionListener="#{lendAndReturnManagedBean.payOutstandingFee(bookManagedBean.selectedBook)}" /> 
+                    </div>
+
+                </p:outputPanel>
+            </p:dialog>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

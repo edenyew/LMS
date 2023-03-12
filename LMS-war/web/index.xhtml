@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./layout/default.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="top">
+        <div class="header">
+            <div class="header-logo">
+                <h3 class="logo">Library Management System</h3>
+            </div>
+        </div>
+        <!--                <ul>
+                            <li><a href="login.xhtml">Login</a></li>
+                            <li><a href="admin.xhtml">Admin</a></li>
+                            <li><a href="members.xhtml">Members</a></li>
+                            <li><a href="books.xhtml">Books</a></li>
+                        </ul>
+        -->
+    </ui:define>
+
+    <ui:define name="content">
+        <div id="hero" class="loginContainter">
+            <div class="top-header">
+                <span>Welcome</span>
+            </div>
+            <div class="login">
+                <h:form id="loginForm">                 
+                    <p:growl id="growl" showDetail="true" sticky="true" /> 
+                    Username:<h:inputText id="username" class="input-field" value="#{authenticationManagedBean.username}" 
+                                          required="true" requiredMessage="Username is required" />
+                    <br></br><br></br>
+
+                    Password: <h:inputSecret id="password" class="input-field" value="#{authenticationManagedBean.password}" 
+                                             required ="true" requiredMessage="Password is required"/>
+
+                    <br></br><br></br>
+
+                    <h:commandButton class="buttonlogin" value="Login" action="#{authenticationManagedBean.login}">
+                        <f:ajax execute="@form" render="growl" />
+                    </h:commandButton>
+                    
+                </h:form>
+            </div>
+        </div>
+
+    </ui:define>
+
+</ui:composition>
