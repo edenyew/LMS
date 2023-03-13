@@ -49,35 +49,59 @@
             <div class="container">
                 <div class="content-table">
                     <div class="panelGrid">
-                        <h3>Register Member</h3>
-                        <p:panelGrid columns="4" layout="flex" columnClasses="p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4, p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4" styleClass="customPanelGrid" contentStyleClass="ui-fluid">
-                            <p:outputLabel for="firstName" value="First Name" />
-                            <p:inputText id="firstName" value="#{memberManagedBean.firstName}" label="FirstName" />
+                        <div class="heading">
+                            <h2>Register Member</h2>
+                        </div>
+                        <p:panelGrid columns="2" layout="flex" styleClass="customPanelGrid" contentStyleClass="ui-fluid" style="border-collapse: collapse;">
 
-                            <p:outputLabel for="lastName" value="Last Name" />
-                            <p:inputText id="lastName" value="#{memberManagedBean.lastName}" label="LastName" />                      
 
-                            <p:outputLabel>Gender:</p:outputLabel>
-                            <p:selectOneMenu value="#{memberManagedBean.gender}">
-                                <f:selectItem itemValue="F" itemLabel="Female" />
-                                <f:selectItem itemValue="M" itemLabel="Male" /> 
-                            </p:selectOneMenu>
+                            <div class="fieldRow">
+                                <p:outputLabel for="firstName" value="First Name" />
+                                <p:inputText id="firstName" value="#{memberManagedBean.firstName}" label="FirstName" required="true" requiredMessage="Please enter your first name" />
+                                <p:message for="firstName" />
+                            </div>
+                            <div class="fieldRow">
+                                <p:outputLabel for="lastName" value="Last Name" />
+                                <p:inputText id="lastName" value="#{memberManagedBean.lastName}" label="LastName" required="true" requiredMessage="Please enter your last name" />   
+                                <p:message for="lastName" />
+                            </div>
 
-                            <p:outputLabel for="age" value="Age" />
-                            <p:inputText id="age" value="#{memberManagedBean.age}" label="Age" />
+                            <div class="fieldRow">
+                                <p:outputLabel>Gender</p:outputLabel>
+                                <p:selectOneMenu value="#{memberManagedBean.gender}" >
+                                    <f:selectItem itemValue="F" itemLabel="Female" />
+                                    <f:selectItem itemValue="M" itemLabel="Male" /> 
+                                </p:selectOneMenu>
+                            </div>
 
-                            <p:outputLabel for="identityNumber" value="Identity Number" />
-                            <p:inputText id="identityNumber" value="#{memberManagedBean.identityNo}" label="IdentityNumber" />
+                            <div class="fieldRow">
+                                <p:outputLabel for="age" value="Age" />
+                                <p:inputText id="age" value="#{memberManagedBean.age}" label="Age" required="true" requiredMessage="Please enter your age" />
+                                <p:message for="age" />
+                            </div>
 
-                            <p:outputLabel for="phone" value="Phone" />
-                            <p:inputText id="phone" value="#{memberManagedBean.phone}" label ="Phone" />
+                            <div class="fieldRow">
+                                <p:outputLabel for="identityNumber" value="Identity Number" />
+                                <p:inputText id="identityNumber" value="#{memberManagedBean.identityNo}" label="IdentityNumber" required="true" requiredMessage="Please enter your identity number" />
+                                <p:message for="identityNumber" />
+                            </div>
 
-                            <p:outputLabel for="address" value="Address" />
-                            <p:inputText id="address" value="#{memberManagedBean.address}" label="Address" />
+                            <div class="fieldRow">
+                                <p:outputLabel for="phone" value="Phone" />
+                                <p:inputText id="phone" value="#{memberManagedBean.phone}" label ="Phone" required="true" requiredMessage="Please enter your phone number" />
+                                <p:message for="phone" />
+                            </div>
+
+                            <div class="fieldRow">
+                                <p:outputLabel for="address" value="Address" />
+                                <p:inputText id="address" value="#{memberManagedBean.address}" label="Address" required="true" requiredMessage="Please enter your address" />
+                                <p:message for="address" />
+                            </div>
+
                         </p:panelGrid>
-                    </div>
-                    <div>
-                        <h:commandButton class="buttonstyle" role="button" value="Submit" actionListener="#{memberManagedBean.registerMember}" /> 
+                        <div class="buttonSubmit">
+                            <h:commandButton class="buttonstyle" role="button" value="Submit" actionListener="#{memberManagedBean.registerMember}" /> 
+                        </div>
                     </div>
                 </div>
             </div>

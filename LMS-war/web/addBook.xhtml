@@ -50,20 +50,25 @@
             <div class="container">
                 <div class="content-table">
                     <div class="panelGrid">
-                        <h3>Add Book</h3>
-                        <p:panelGrid columns="4" layout="flex" columnClasses="p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4, p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4" styleClass="customPanelGrid" contentStyleClass="ui-fluid">
-                            <p:outputLabel for="title" value="Title" />
-                            <p:inputText id="title" value="#{bookManagedBean.title}" label="Title" />
-
-                            <p:outputLabel for="isbn" value="ISBN" />
-                            <p:inputText id="isbn" value="#{bookManagedBean.isbn}" label="ISBN" />                      
-
-                            <p:outputLabel for="author" value="Author" />
-                            <p:inputText id="author" value="#{bookManagedBean.author}" label="Author" />
-
+                        <div class="heading">
+                            <h2>Add Book</h2>
+                        </div>
+                        <p:panelGrid columns="4" layout="flex" styleClass="customPanelGrid" contentStyleClass="ui-fluid">
+                            <div class="fieldRow">
+                                <p:outputLabel for="title" value="Title" />
+                                <p:inputText id="title" value="#{bookManagedBean.title}" label="Title" />
+                            </div>
+                            <div class="fieldRow">
+                                <p:outputLabel for="isbn" value="ISBN" />
+                                <p:inputText id="isbn" value="#{bookManagedBean.isbn}" label="ISBN" /> 
+                            </div>
+                            <div class="fieldRow">
+                                <p:outputLabel for="author" value="Author" />
+                                <p:inputText id="author" value="#{bookManagedBean.author}" label="Author" />
+                            </div>
                         </p:panelGrid>
                     </div>
-                    <div>
+                    <div class="buttonSubmit">
                         <h:commandButton class="buttonstyle" role="button" value="Submit" actionListener="#{bookManagedBean.addBook}" /> 
                     </div>
                 </div>

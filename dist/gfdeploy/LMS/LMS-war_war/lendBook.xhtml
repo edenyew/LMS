@@ -49,23 +49,32 @@
             <div class="container">
                 <div class="">
                     <div class="">
-                        <h3>Lend Book </h3>
-                        <p:panelGrid columns="4" layout="flex" columnClasses="p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4, p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4" styleClass="customPanelGrid" contentStyleClass="ui-fluid">
-                            <p:outputLabel for="firstName" value="Member's First Name" />
-                            <p:inputText id="firstName" value="#{lendAndReturnManagedBean.memberFirstName}" />
+                        <div class="heading">
+                            <h2>Lend Book </h2>
+                        </div>
+                        <p:panelGrid columns="4" layout="flex" styleClass="customPanelGrid" contentStyleClass="ui-fluid">
 
-                            <p:outputLabel for="lastName" value="Member's Last Name" />
-                            <p:inputText id="lastName" value="#{lendAndReturnManagedBean.memberLastName}" />
+                            <div class="fieldRow">
+                                <p:outputLabel for="firstName" value="First Name" />
+                                <p:inputText id="firstName" value="#{lendAndReturnManagedBean.memberFirstName}" />
+                            </div>
+                            <div class="fieldRow">
+                                <p:outputLabel for="lastName" value="Last Name" />
+                                <p:inputText id="lastName" value="#{lendAndReturnManagedBean.memberLastName}" />
+                            </div>
 
-                            <p:outputLabel for="identityNumber" value="Identity Number" />
-                            <p:inputText id="identityNumber" value="#{lendAndReturnManagedBean.memberIdentityNumber}" />
-
-                            <p:outputLabel for="isbn" value="ISBN" />
-                            <p:inputText id="isbn" value="#{lendAndReturnManagedBean.bookIsbn}" />  
+                            <div class="fieldRow">
+                                <p:outputLabel for="identityNumber" value="Identity Number" />
+                                <p:inputText id="identityNumber" value="#{lendAndReturnManagedBean.memberIdentityNumber}" />
+                            </div>
+                            <div class="fieldRow">
+                                <p:outputLabel for="isbn" value="ISBN" />
+                                <p:inputText id="isbn" value="#{lendAndReturnManagedBean.bookIsbn}" />  
+                            </div>
 
                         </p:panelGrid>
                     </div>
-                    <div>
+                    <div class="buttonSubmit">
                         <h:commandButton class="buttonstyle" role="button" value="Submit" actionListener="#{lendAndReturnManagedBean.lendABook}" /> 
                     </div>
                 </div>

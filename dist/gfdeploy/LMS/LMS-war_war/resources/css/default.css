@@ -41,7 +41,7 @@ a:link:hover, a:visited:hover  {
   display: inline-flex;
   flex: 1 1 auto;
   font-family: Inter,sans-serif;
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: 700;
   justify-content: center;
   line-height: 1;
@@ -62,7 +62,6 @@ a:link:hover, a:visited:hover  {
 .buttonstyle:hover {
   box-shadow: #121212 0 0 0 3px, transparent 0 0 0 0;
 }
-
 
 .buttonlogin {
   appearance: none;
