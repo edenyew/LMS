@@ -24,113 +24,99 @@ and open the template in the editor.
     colour: white;
 }
 
-nav {
+.navlinks {
     width: 28%;
+    padding-right: 0.5rem;
     display: flex;
+    justify-content: space-evenly;
+    height:5rem;
     align-items: center;
-    justify-content: space-between;
-    padding-top: 1%;
+    padding-top: 1.5rem;
 }
 
-nav ul li {
-    list-style-type: none;
-    display: inline-block;
-    padding: 10px 10px;
+.navlinks a {
+    font-size: 13px;
 }
 
-nav ul li a {
-    colour: white;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.ui-menu {
-    background: none;
-    box-shadow: none;
+.dropdown .dropbtn {
+    font-size: 13px;  
     border: none;
-}
-
-.ui-menu .ui-menuitem {
-    display: inline-block;
-    float: none;
-    background: none;
-    box-shadow: none;
-}
-
-.ui-menu .ui-menuitem > ul {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    z-index: 9999;
-    display: none;
-    min-width: 10rem;
-    padding: .5rem 0;
-    margin: 0;
-    list-style: none;
-}
-
-.ui-menu .ui-menuitem:hover > ul {
-    display: block;
-    background: gray;
-    box-shadow: none;
-}
-
-.ui-menu .ui-menuitem a {
-    display: block;
-    text-decoration: none;
+    outline: none;
     color: white;
-    padding: 0.20rem 0.5rem;
-    white-space: nowrap;
+    padding: 10px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
 }
 
-.ui-menu .ui-menuitem a:hover {
-    background: white;
-    colour: white;
+.spacingMember {
+    margin-left: 18px;
 }
 
+.navbar a:hover, .dropdown:hover .dropbtn {
+    background-color: #778899;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #a9a9a9;
+    min-width: 110px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    float: none;
+    color: black;
+    padding: 8px 14px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    font-size: 12px;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
 
 /* CSS */
-.buttonLogout {
-  appearance: none;
-  background-color: transparent;
-  border: 2px solid #1A1A1A;
-  border-radius: 15px;
+.ui-button.buttonLogout {
+  background: #ffa07a;
+  border: 1px solid #ffa07a;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
   box-sizing: border-box;
-  color: #3B3B3B;
+  color: black;
   cursor: pointer;
   display: inline-block;
-  font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 16px;
+  font-family: inherit;
+  font-size: 13px;
   font-weight: 600;
-  line-height: normal;
-  margin: 2rem 2rem;
-  min-height: 20px;
-  min-width: 0;
-  outline: none;
-  padding: 0;
+  line-height: 10px;
+  min-height: 30px;
+  outline: 0;
+  padding: 0px 0px;
   text-align: center;
-  text-decoration: none;
-  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  text-rendering: geometricprecision;
+  text-transform: none;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  width: 23%;
-  will-change: transform;
+  vertical-align: middle;
 }
 
-.buttonLogout:disabled {
-  pointer-events: none;
+.ui-button.buttonLogout:hover,
+.ui-button.buttonLogout:active {
+  background-color: #ffefd5;
+  background-position: 0 0;
+  color: #FF4742;
 }
 
-.buttonLogout:hover {
-  color: #fff;
-  background-color: #1A1A1A;
-  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
-  transform: translateY(-2px);
+.ui-button.buttonLogout:active {
+  opacity: .5;
 }
-
-.buttonLogout:active {
-  box-shadow: none;
-  transform: translateY(0);
-}
-

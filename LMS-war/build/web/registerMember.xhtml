@@ -8,27 +8,36 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:define name="top">
-        
+
         <h:form>
             <div class="header">
                 <div class="header-logo">
                     <h3 class="logo">Library Management System</h3>
                 </div>
-                <nav>
+                <nav class="navlinks">
                     <a href="home.xhtml">Home</a>
-                    <p:menubar>
-                        <p:submenu label="Member">
-                            <p:menuitem value="View All Members" outcome="/members.xhtml"/>
-                            <p:menuitem value="Register Member" outcome="/registerMember.xhtml"/>
-                        </p:submenu>
-                        <p:submenu label="Books">
-                            <p:menuitem value="View All Books" outcome="/books.xhtml"/>
-                            <p:menuitem value="Return Book" outcome="/returnBook.xhtml"/>
-                            <p:menuitem value="Lend Book" outcome="/lendBook.xhtml"/>
-                            <p:menuitem value="Add Books" outcome="/addBook.xhtml"/>
-                        </p:submenu>
-                    </p:menubar>
-                    <p:commandButton class="logout" value="Logout" action="#{authenticationManagedBean.logout()}"/>
+                    <div class="dropdown">
+                        <div class="spacingMember">
+                            <button class="dropbtn">Members 
+                                <i class="fa fa-caret-down"></i>
+                            </button>
+                            <div class="dropdown-content">
+                                <a href="members.xhtml">View All Members</a>
+                                <a href="registerMember.xhtml">Register Member</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="dropbtn">Books 
+                            <i class="fa fa-caret-down"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="books.xhtml">View All Books</a>
+                            <a href="lendBook.xhtml">Lend Book</a>
+                            <a href="addBook.xhtml">Add Books</a>
+                        </div>
+                    </div>
+                    <p:commandButton class="buttonLogout" value="Logout" action="#{authenticationManagedBean.logout()}"/>
                 </nav>
             </div>
         </h:form>
