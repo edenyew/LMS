@@ -55,21 +55,25 @@
                         <p:panelGrid columns="4" layout="flex" styleClass="customPanelGrid" contentStyleClass="ui-fluid">
 
                             <div class="fieldRow">
-                                <p:outputLabel for="firstName" value="First Name" />
-                                <p:inputText id="firstName" value="#{lendAndReturnManagedBean.memberFirstName}" />
+                                <p:outputLabel for="firstName" value="Member's First Name" />
+                                <p:inputText id="firstName" value="#{lendAndReturnManagedBean.memberFirstName}" required="true" requiredMessage="Please enter member's first name" />
+                                <p:message for="firstName" />
                             </div>
                             <div class="fieldRow">
-                                <p:outputLabel for="lastName" value="Last Name" />
-                                <p:inputText id="lastName" value="#{lendAndReturnManagedBean.memberLastName}" />
+                                <p:outputLabel for="lastName" value="Member's Last Name" />
+                                <p:inputText id="lastName" value="#{lendAndReturnManagedBean.memberLastName}" required="true" requiredMessage="Please enter member's last name" />
+                                <p:message for="lastName" />
                             </div>
 
                             <div class="fieldRow">
                                 <p:outputLabel for="identityNumber" value="Identity Number" />
-                                <p:inputText id="identityNumber" value="#{lendAndReturnManagedBean.memberIdentityNumber}" />
+                                <p:inputText id="identityNumber" value="#{lendAndReturnManagedBean.memberIdentityNumber}" required="true" requiredMessage="Please enter member's identity number" />
+                                <p:message for="identityNumber" />
                             </div>
                             <div class="fieldRow">
                                 <p:outputLabel for="isbn" value="ISBN" />
-                                <p:inputText id="isbn" value="#{lendAndReturnManagedBean.bookIsbn}" />  
+                                <p:inputText id="isbn" value="#{lendAndReturnManagedBean.bookIsbn}" required="true" requiredMessage="Please enter books's ISBN" />  
+                                <p:message for="isbn" />
                             </div>
 
                         </p:panelGrid>

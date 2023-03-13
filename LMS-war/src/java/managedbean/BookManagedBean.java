@@ -7,6 +7,7 @@ package managedbean;
 
 import entity.BookEntity;
 import entity.LendAndReturn;
+import entity.MemberEntity;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -56,7 +57,7 @@ public class BookManagedBean implements Serializable {
 
     private BookEntity selectedBook;
     private LendAndReturn lendAndReturn;
-    
+
     private BigDecimal fineAmount;
 
     /**
@@ -106,6 +107,33 @@ public class BookManagedBean implements Serializable {
 //                || book.getBookId() < filterLong;
     }
 
+    public boolean globalFilterFunctionForUnavailableBooks(Object value, Object filter, Locale locale) {
+        String filterText = (filter == null) ? null : filter.toString().trim().toLowerCase();
+        if (filterText == null || filterText.equals("")) {
+            return true;
+        }
+
+        if (value instanceof BookEntity) {
+            BookEntity book = (BookEntity) value;
+
+            return book.getAuthor().toLowerCase().contains(filterText)
+                    || book.getIsbn().toLowerCase().contains(filterText)
+                    || book.getTitle().toLowerCase().contains(filterText);
+
+        } else if (value instanceof MemberEntity) {
+            MemberEntity member = (MemberEntity) value;
+
+            return member.getIdentityNo().toLowerCase().contains(filterText);
+
+        } else if (value instanceof LendAndReturn) {
+            LendAndReturn lendAndReturn = (LendAndReturn) value;
+
+            return lendAndReturn.getLendDate().toString().toLowerCase().contains(filterText);
+        } else {
+            return false;
+        }
+    }
+
     public void addBook(ActionEvent evt) {
         FacesContext context = FacesContext.getCurrentInstance();
 
@@ -119,11 +147,17 @@ public class BookManagedBean implements Serializable {
             context.getExternalContext().getFlash().setKeepMessages(true);
             context.addMessage(null, new FacesMessage("Success", "Successfully added new book"));
             context.getExternalContext().redirect("books.xhtml?faces-redirect=true");
-            
+
         } catch (Exception e) {
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Unable to add new book"));
         }
 
+    }
+
+    public List<BookEntity> getListOfUnavailableBooks() {
+        List<BookEntity> unavailableBooks = bookEntitySessionBean.retrieveAllUnavailableBooks();
+
+        return unavailableBooks;
     }
 
     public void deleteBook() {

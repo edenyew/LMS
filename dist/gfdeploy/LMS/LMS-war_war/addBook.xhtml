@@ -56,15 +56,15 @@
                         <p:panelGrid columns="4" layout="flex" styleClass="customPanelGrid" contentStyleClass="ui-fluid">
                             <div class="fieldRow">
                                 <p:outputLabel for="title" value="Title" />
-                                <p:inputText id="title" value="#{bookManagedBean.title}" label="Title" />
+                                <p:inputText id="title" value="#{bookManagedBean.title}" label="Title" required="true" requiredMessage="Please enter title of book" />
                             </div>
                             <div class="fieldRow">
                                 <p:outputLabel for="isbn" value="ISBN" />
-                                <p:inputText id="isbn" value="#{bookManagedBean.isbn}" label="ISBN" /> 
+                                <p:inputText id="isbn" value="#{bookManagedBean.isbn}" label="ISBN" required="true" requiredMessage="Please enter book's ISBN" /> 
                             </div>
                             <div class="fieldRow">
                                 <p:outputLabel for="author" value="Author" />
-                                <p:inputText id="author" value="#{bookManagedBean.author}" label="Author" />
+                                <p:inputText id="author" value="#{bookManagedBean.author}" label="Author" required="true" requiredMessage="Please enter author of book" />
                             </div>
                         </p:panelGrid>
                     </div>

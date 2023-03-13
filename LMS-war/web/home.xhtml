@@ -45,9 +45,48 @@
     <ui:define name="content">
         <h:form>
             <p:growl id="growl" showDetail="true" sticky="true" />
+
             <div class="container">
-                <h3>Welcome #{authenticationManagedBean.username}!</h3>
+                <h3 style='margin-left: 10px;'>WELCOME #{authenticationManagedBean.username.toUpperCase()}!</h3>
+                <div class="heading">
+                    <h2>List Of Borrowed Books</h2>
+                </div>
+                <div class="content-table">
+                    <p:dataTable var="book" value="#{bookManagedBean.getListOfUnavailableBooks()}" widgetVar="booksTable"
+                                 emptyMessage="No borrowed books"
+                                 globalFilterFunction="#{bookManagedBean.globalFilterFunctionForUnavailableBooks}"
+                                 resizableColumns="true" >
+                        <f:facet name="header">
+                            <p:outputPanel>
+                                <h:outputText value="Search all fields: " />
+                                <p:inputText id="globalFilter" onkeyup="PF('booksTable').filter()" style="width:150px" placeholder="Search"/>
+                            </p:outputPanel>
+                        </f:facet>
+                        <p:column headerText="Book ID">
+                            <h:outputText value="#{book.bookId}" />
+                        </p:column>
+                        <p:column headerText="Title">
+                            <h:outputText value="#{book.title}" />
+                        </p:column>
+
+                        <p:column headerText="ISB">
+                            <h:outputText value="#{book.isbn}" />
+                        </p:column>
+
+                        <p:column headerText="Author">
+                            <h:outputText value="#{book.author}" />
+                        </p:column>
+
+                        <p:column headerText="Lend Date">
+                            <h:outputText value="#{lendAndReturnManagedBean.getLatestLendAndReturnRecordByBook(book).lendDate}" />
+                        </p:column>
+                        <p:column headerText="Lender's Identity No">
+                            <h:outputText value="#{lendAndReturnManagedBean.getLatestLendAndReturnRecordByBook(book).member.identityNo}" />
+                        </p:column>                    
+                    </p:dataTable>
+                </div>
             </div>
+
         </h:form>
     </ui:define>
 

@@ -45,35 +45,6 @@
     </ui:define>
 
     <ui:define name="content">
-
-        <style type="text/css">
-            .ui-datatable {
-                margin-bottom: 25px
-            }
-
-            .ui-datatable .ui-datatable-header {
-                text-align: right !important;
-            }
-
-            .ui-button-text-only .ui-button-text {
-                padding: 0.3em 0.4em;
-            }
-
-            .ui-selectcheckboxmenu-panel .ui-selectcheckboxmenu-header .ui-chkbox {
-                visibility: hidden;
-            }
-
-            .ui-filter-column .ui-column-customfilter .custom-filter {
-                width: 100%;
-                box-sizing: border-box;
-            }
-
-            .year-spinner input {
-                width: 100%;
-                box-sizing: border-box;
-            }
-        </style>
-
         <h:form id="form">
             <p:growl id="growl" showDetail="true" sticky="true" />
             <div class="container">
@@ -122,6 +93,9 @@
                         </p:column>                        
                     </p:dataTable>
                 </div>
+                <div>
+                    <h:commandButton class="buttonstyle" role="button" value="Add Book" action="addBook.xhtml?faces-redirect=true"/>
+                </div>
             </div>
             <p:dialog header="Book Details" widgetVar="bookDialog" modal="false" showEffect="fade" hideEffect="fade" resizable="false">
                 <p:outputPanel id="bookDetails"> 
@@ -147,11 +121,11 @@
                     </p:panelGrid>
 
                     <div>
-                        <h:commandButton value="Lend" rendered="#{bookManagedBean.selectedBook.available}" action="lendBook?faces-redirect=true" />
+                        <h:commandButton value="Lend" styleClass="dialogButton" rendered="#{bookManagedBean.selectedBook.available}" action="lendBook?faces-redirect=true" />
 
-                        <h:commandButton value="Return" rendered="#{!bookManagedBean.selectedBook.available}" disabled="#{!(lendAndReturnManagedBean.checkPaymentStatus(bookManagedBean.selectedBook))}" actionListener="#{lendAndReturnManagedBean.returnABook(event, bookManagedBean.selectedBook)}" />
+                        <h:commandButton value="Return" styleClass="dialogButton" style="margin-right: 5px;" rendered="#{!bookManagedBean.selectedBook.available}" disabled="#{!(lendAndReturnManagedBean.checkPaymentStatus(bookManagedBean.selectedBook))}" actionListener="#{lendAndReturnManagedBean.returnABook(event, bookManagedBean.selectedBook)}" />
 
-                        <h:commandButton value="Pay outstanding fee" rendered="#{!bookManagedBean.selectedBook.available}" disabled="#{lendAndReturnManagedBean.checkPaymentStatus(bookManagedBean.selectedBook)}" actionListener="#{lendAndReturnManagedBean.payOutstandingFee(bookManagedBean.selectedBook)}" /> 
+                        <h:commandButton value="Pay Fine" styleClass="dialogButton" rendered="#{!bookManagedBean.selectedBook.available}" disabled="#{lendAndReturnManagedBean.checkPaymentStatus(bookManagedBean.selectedBook)}" actionListener="#{lendAndReturnManagedBean.payOutstandingFee(bookManagedBean.selectedBook)}" /> 
                     </div>
 
                 </p:outputPanel>

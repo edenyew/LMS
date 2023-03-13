@@ -9,6 +9,7 @@ import entity.MemberEntity;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
@@ -27,39 +28,42 @@ public class MemberEntitySessionBean implements MemberEntitySessionBeanLocal {
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
-    
     @Override
     public MemberEntity createNewMember(MemberEntity newMemberEntity) {
         em.persist(newMemberEntity);
         em.flush();
-        
+
         return newMemberEntity;
     }
-    
+
     @Override
     public MemberEntity retrieveMemberEntityById(Long memberId) {
         MemberEntity memberEntity = em.find(MemberEntity.class, memberId);
-        
+
         return memberEntity;
     }
-    
+
     @Override
     public MemberEntity retrieveMemberEntityByIdentityNumber(String identityNumber) {
         Query query;
         query = em.createQuery("SELECT m FROM MemberEntity m where m.identityNo = :identityNum");
         query.setParameter("identityNum", identityNumber);
-        MemberEntity memberEntity = (MemberEntity) query.getSingleResult();
         
-        return memberEntity;
+        try {
+            MemberEntity memberEntity = (MemberEntity) query.getSingleResult();
+            return memberEntity;
+        } catch (NoResultException e) {
+            return null;
+        }
     }
-    
+
     @Override
     public void deleteMemberEntity(Long memberEntityId) {
         MemberEntity memberEntityToDelete = retrieveMemberEntityById(memberEntityId);
-        
+
         em.remove(memberEntityToDelete);
     }
-    
+
     @Override
     public List<MemberEntity> retrieveAllMembers() {
         Query query;

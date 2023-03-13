@@ -68,3 +68,6 @@ and open the template in the editor.
   padding-top: 3px;
 }
 
+.ui-outputlabel {
+  font-weight: bold;
+}

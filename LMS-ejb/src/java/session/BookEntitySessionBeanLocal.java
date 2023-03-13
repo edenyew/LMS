@@ -29,5 +29,7 @@ public interface BookEntitySessionBeanLocal {
     public List<BookEntity> retrieveAllBooks();
 
     public BookEntity updateBookAvailability(BookEntity book);
+
+    public List<BookEntity> retrieveAllUnavailableBooks();
     
 }

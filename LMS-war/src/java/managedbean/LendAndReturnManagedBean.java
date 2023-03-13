@@ -64,7 +64,6 @@ public class LendAndReturnManagedBean implements Serializable {
     public void init() {
     }
 
-    // add book does not exist and member does not exist exception
     public void lendABook(ActionEvent evt) throws BookNotFoundException, MemberNotFoundException, IOException {
         FacesContext context = FacesContext.getCurrentInstance();
 
@@ -82,10 +81,10 @@ public class LendAndReturnManagedBean implements Serializable {
 
         LendAndReturn lendAndReturn = new LendAndReturn();
 
-//        Date today = new Date();
-        Calendar calendar = Calendar.getInstance();
-        calendar.add(Calendar.DAY_OF_MONTH, -20);
-        Date today = calendar.getTime();
+        Date today = new Date();
+//        Calendar calendar = Calendar.getInstance();
+//        calendar.add(Calendar.DAY_OF_MONTH, -20);
+//        Date today = calendar.getTime();
 
         lendAndReturn.setLendDate(today);
 
@@ -158,18 +157,18 @@ public class LendAndReturnManagedBean implements Serializable {
         LendAndReturn lendAndReturn = lendAndReturnSessionBean.retrieveLatestLendAndReturnRecordByBook(book);
         return lendAndReturn;
     }
-    
+
     public void payOutstandingFee(BookEntity book) {
         LendAndReturn lendAndReturn = lendAndReturnSessionBean.updatePaymentStatus(book);
     }
-    
+
     public boolean checkPaymentStatus(BookEntity book) {
         LendAndReturn lendAndReturn = lendAndReturnSessionBean.retrieveLatestLendAndReturnRecordByBook(book);
         if (lendAndReturn == null) {
             return true;
         } else {
             return lendAndReturn.isPaidAlr();
-        }   
+        }
     }
 
     /**
