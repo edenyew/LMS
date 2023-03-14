@@ -113,25 +113,11 @@ public class BookManagedBean implements Serializable {
             return true;
         }
 
-        if (value instanceof BookEntity) {
-            BookEntity book = (BookEntity) value;
+        BookEntity book = (BookEntity) value;
 
-            return book.getAuthor().toLowerCase().contains(filterText)
-                    || book.getIsbn().toLowerCase().contains(filterText)
-                    || book.getTitle().toLowerCase().contains(filterText);
-
-        } else if (value instanceof MemberEntity) {
-            MemberEntity member = (MemberEntity) value;
-
-            return member.getIdentityNo().toLowerCase().contains(filterText);
-
-        } else if (value instanceof LendAndReturn) {
-            LendAndReturn lendAndReturn = (LendAndReturn) value;
-
-            return lendAndReturn.getLendDate().toString().toLowerCase().contains(filterText);
-        } else {
-            return false;
-        }
+        return book.getAuthor().toLowerCase().contains(filterText)
+                || book.getIsbn().toLowerCase().contains(filterText)
+                || book.getTitle().toLowerCase().contains(filterText);
     }
 
     public void addBook(ActionEvent evt) {

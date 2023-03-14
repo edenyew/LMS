@@ -58,8 +58,8 @@
                                  resizableColumns="true" >
                         <f:facet name="header">
                             <p:outputPanel>
-                                <h:outputText value="Search all fields: " />
-                                <p:inputText id="globalFilter" onkeyup="PF('booksTable').filter()" style="width:150px" placeholder="Search"/>
+                                <h:outputText value="Search Borrowed Books: " />
+                                <p:inputText id="globalFilter" onkeyup="PF('booksTable').filter()" style="width:150px; margin-left: 5px;" placeholder="Title/ISBN/Author"/>
                             </p:outputPanel>
                         </f:facet>
                         <p:column headerText="Book ID">
