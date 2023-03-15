@@ -144,6 +144,15 @@ public class LendAndReturnSessionBean implements LendAndReturnSessionBeanLocal {
         query.setParameter("book", book);
         return query.getSingleResult();
     }
+    
+    @Override
+    public LendAndReturn retrieveLendAndReturnByMember(MemberEntity member) {
+        TypedQuery<LendAndReturn> query = em.createQuery(
+                "SELECT lr FROM LendAndReturn lr JOIN lr.member m WHERE m = :member",
+                LendAndReturn.class);
+        query.setParameter("member", member);
+        return query.getSingleResult();
+    }
 
     @Override
     public void deleteLendAndReturn(Long lendAndReturnId) {

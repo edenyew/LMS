@@ -93,11 +93,8 @@
                                              title="View" icon="fa fa-fw fa-search">
                                 <f:setPropertyActionListener value="#{member}" target="#{memberManagedBean.selectedMember}" />
                             </p:commandButton>
-                            <p:button icon="fa fa-fw fa-edit" title="Edit">
-<!--                                <f:param name="cId" value="#{customer.id}" />-->
-                            </p:button>
                             <p:commandButton icon="fa fa-fw fa-remove" action="#{memberManagedBean.deleteMember}" update=":form" title="Delete">
-                                <f:param name="mId" value="#{member.memberId}" />
+                                <f:param name="mId" value="#{member.firstName}" />
                             </p:commandButton>
                         </p:column>
                     </p:dataTable>

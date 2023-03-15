@@ -7,6 +7,7 @@ package session;
 
 import entity.BookEntity;
 import entity.LendAndReturn;
+import entity.MemberEntity;
 import java.math.BigDecimal;
 import java.util.List;
 import javax.ejb.Local;
@@ -35,5 +36,7 @@ public interface LendAndReturnSessionBeanLocal {
     public LendAndReturn updateLendAndReturn(BookEntity bookToReturn);
 
     public LendAndReturn updatePaymentStatus(BookEntity book);
+
+    public LendAndReturn retrieveLendAndReturnByMember(MemberEntity member);
     
 }

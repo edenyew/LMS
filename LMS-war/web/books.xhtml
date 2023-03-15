@@ -80,13 +80,10 @@
                         </p:column>
 
                         <p:column>
-                            <p:commandButton update=":form:bookDetails" oncomplete="PF('bookDialog').show()" 
+                            <p:commandButton style="margin-right: 5px;" update=":form:bookDetails" oncomplete="PF('bookDialog').show()" 
                                              title="View" icon="fa fa-fw fa-search">
                                 <f:setPropertyActionListener value="#{book}" target="#{bookManagedBean.selectedBook}" />
                             </p:commandButton>
-                            <p:button icon="fa fa-fw fa-edit" title="Edit">
-<!--                                <f:param name="cId" value="#{customer.id}" />-->
-                            </p:button>
                             <p:commandButton icon="fa fa-fw fa-remove" action="#{bookManagedBean.deleteBook}" update=":form" title="Delete">
                                 <f:param name="bId" value="#{book.bookId}" />
                             </p:commandButton>
