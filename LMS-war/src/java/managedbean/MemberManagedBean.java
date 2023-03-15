@@ -22,6 +22,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.faces.view.ViewScoped;
+import session.LendAndReturnSessionBeanLocal;
 
 /**
  *
@@ -47,6 +48,7 @@ public class MemberManagedBean implements Serializable {
     private List<MemberEntity> filteredMembers;
 
     private MemberEntity selectedMember;
+    private MemberEntity selectedMemberForDetails;
 
     /**
      * Creates a new instance of MemberManagedBean
@@ -122,6 +124,20 @@ public class MemberManagedBean implements Serializable {
         }
 
     } //end register a new member
+    
+//    public String retrieveSelectedMember() {
+//        FacesContext context = FacesContext.getCurrentInstance();
+//
+//        Map<String, String> params = context.getExternalContext()
+//                .getRequestParameterMap();
+//        String mIdStr = params.get("mIdentityNum");
+//        Long mId = Long.parseLong(mIdStr);
+//        
+//        MemberEntity selectedMember = memberEntitySessionBean.retrieveMemberEntityById(mId);
+//        setSelectedMemberForDetails(selectedMember);
+//        
+//        return "viewMemberDetails.xhtml?faces-redirect=true";
+//    }
 
     public void deleteMember() {
         FacesContext context = FacesContext.getCurrentInstance();
@@ -284,6 +300,14 @@ public class MemberManagedBean implements Serializable {
 
     public void setmId(Long mId) {
         this.mId = mId;
+    }
+
+    public MemberEntity getSelectedMemberForDetails() {
+        return selectedMemberForDetails;
+    }
+
+    public void setSelectedMemberForDetails(MemberEntity selectedMemberForDetails) {
+        this.selectedMemberForDetails = selectedMemberForDetails;
     }
 
 }
