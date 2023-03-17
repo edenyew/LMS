@@ -4,9 +4,9 @@ This is a Library Management System that assists staff in the handling of books 
 
 ## Table of contents
 * [Technologies](#technologies)
-* [Database Schema](#Database Schema)
-* [System Functionality](#System Functionality)
-* [Extra Features](#Extra Features)
+* [Database Schema](#Database-Schema)
+* [System Functionality](#System-Functionality)
+* [Extra Features](#Extra-Features)
 
 
 ## Technologies
@@ -19,7 +19,7 @@ Project is created with the following Tech Stack:
 ## Database Schema
 This is the Database Schema for the Library Management System
 
-<img width="629" alt="Database Schema" src="https://user-images.githubusercontent.com/100083613/225815046-1c06828a-5828-4c3d-ad00-5577b5c8428f.png">
+<img width="670" alt="Schema" src="https://user-images.githubusercontent.com/100083613/225815344-fd96db1c-24c9-4fcd-89c4-154dda9290db.png">
 
 
 ## System Functionality
