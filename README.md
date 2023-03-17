@@ -19,6 +19,7 @@ Project is created with the following Tech Stack:
 ## Database Schema
 This is the Database Schema for the Library Management System
 
+<img width="629" alt="Database Schema" src="https://user-images.githubusercontent.com/100083613/225815046-1c06828a-5828-4c3d-ad00-5577b5c8428f.png">
 
 
 ## System Functionality
